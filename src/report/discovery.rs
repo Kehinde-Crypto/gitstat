@@ -1,4 +1,4 @@
-use std::path::{Path};
+use std::path::{Path, PathBuf};
 use walkdir::{Walkdir};
 
 pub fn find_repos(root: &Path) -> Vec<PathBuf> {
