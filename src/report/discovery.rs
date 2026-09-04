@@ -1,9 +1,9 @@
 use std::path::{Path, PathBuf};
-use walkdir::{Walkdir};
+use walkdir::{WalkDir};
 
-pub fn find_repos(root: &Path) -> Vec<PathBuf> {
+pub fn find_repos(root: &Path , max_depth: usize) -> Vec<PathBuf> {
     let mut repos = Vec::new();
-    let mut it = WalkDir::new(root).into_iter();
+    let mut it = WalkDir::new(root).max_depth(max_depth).into_iter();
 
     while let Some(entry) = it.next() {
         let entry = match entry {
@@ -19,5 +19,5 @@ pub fn find_repos(root: &Path) -> Vec<PathBuf> {
         }
     }
 
-    repos
+    repos    
 }
